@@ -20,6 +20,9 @@ export class User extends BaseEntity {
   @Column({ nullable: false, type: 'varchar', length: 200 })
   name: string;
 
+  @Column({ nullable: false, type: 'varchar', length: 200 })
+  password: string;
+
   @CreateDateColumn()
   createdAt: Date;
 
