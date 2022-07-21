@@ -21,17 +21,18 @@ export class UserRepository extends Repository<User> {
   }
 
   async findUserById(id: string): Promise<User | undefined> {
-    const users = await this.findOneBy({ id });
+    const users = await this.findOne({ id });
     return users;
   }
 
   async UpdateUser(
     id: string,
     updateUserDto: UpdateUserDto,
-  ): Promise<UpdateResult> {
+  ): Promise<User> {
     // const user = await this.findOneBy({ id });
     const userUpdated = await this.update({ id }, updateUserDto);
-    return userUpdated;
+
+    return this.findUserById(id);
   }
 
   async deleteUser(id: string): Promise<void> {
