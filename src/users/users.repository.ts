@@ -1,4 +1,4 @@
-import { EntityRepository, Repository, UpdateResult } from 'typeorm';
+import { EntityRepository, Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -21,17 +21,12 @@ export class UserRepository extends Repository<User> {
   }
 
   async findUserById(id: string): Promise<User | undefined> {
-    const users = await this.findOne({ id });
-    return users;
+    const user = await this.findOne({ id });
+    return user;
   }
 
-  async UpdateUser(
-    id: string,
-    updateUserDto: UpdateUserDto,
-  ): Promise<User> {
-    // const user = await this.findOneBy({ id });
-    const userUpdated = await this.update({ id }, updateUserDto);
-
+  async UpdateUser(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+    await this.update({ id }, updateUserDto);
     return this.findUserById(id);
   }
 

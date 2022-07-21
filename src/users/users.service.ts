@@ -21,17 +21,31 @@ export class UsersService {
     return users;
   }
 
-  async findOne(id: string): Promise<User | null> {
+  async findOne(id: string): Promise<User | object> {
     const user = await this.userRepository.findUserById(id);
+    if (!user) {
+      return { message: 'User not found' };
+    }
     return user;
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+  async update(
+    id: string,
+    updateUserDto: UpdateUserDto,
+  ): Promise<User | object> {
+    const user = await this.userRepository.findUserById(id);
+    if (!user) {
+      return { message: 'User not found' };
+    }
     const userUdated = await this.userRepository.UpdateUser(id, updateUserDto);
     return userUdated;
   }
 
-  async remove(id: string): Promise<void> {
+  async remove(id: string): Promise<void | object> {
+    const user = await this.userRepository.findUserById(id);
+    if (!user) {
+      return { message: 'User not found' };
+    }
     await this.userRepository.deleteUser(id);
   }
 }
