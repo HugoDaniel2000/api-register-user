@@ -4,7 +4,6 @@ import { UserRepository } from './users.repository';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
-import { UpdateResult } from 'typeorm';
 
 @Injectable()
 export class UsersService {
@@ -18,7 +17,6 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
-
     const users = await this.userRepository.findAllUser();
     return users;
   }
@@ -28,10 +26,7 @@ export class UsersService {
     return user;
   }
 
-  async update(
-    id: string,
-    updateUserDto: UpdateUserDto,
-  ): Promise<User> {
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
     const userUdated = await this.userRepository.UpdateUser(id, updateUserDto);
     return userUdated;
   }
