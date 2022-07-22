@@ -19,7 +19,7 @@ Construir uma API :
 
 ## :wrench: O que foi desenvolvido
 
-A API a ser construída trata-se de um sistema de cadastro de usuários, onde será possível criar, visualizar, deletar usuários.
+A API a ser construída trata-se de um sistema de cadastro de usuários, onde será possível criar, visualizar, atualizar e deletar usuários.
 
 **⚠️ Atenção:**
 
