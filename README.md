@@ -19,8 +19,6 @@ Construir uma API :
 
 ## :wrench: O que foi desenvolvido
 
-Desenvolvido uma API utilizando a arquitetura MSC e Sequelize!
-
 A API a ser construída trata-se de um sistema de cadastro de usuários, onde será possível criar, visualizar, deletar usuários.
 
 **⚠️ Atenção:**
